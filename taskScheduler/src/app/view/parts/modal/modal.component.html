@@ -1,0 +1,6 @@
+@if (open) {
+  <div class="backdrop" (click)="close.emit()"></div>
+  <div class="modal">
+    <ng-content></ng-content>
+  </div>
+}

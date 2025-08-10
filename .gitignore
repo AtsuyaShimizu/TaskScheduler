@@ -1,0 +1,13 @@
+# Node.js パッケージ
+node_modules/
+
+# ビルド成果物
+dist/
+build/
+
+# 環境変数ファイル
+.env
+.env.local
+
+# Mac 固有ファイル
+.DS_Store

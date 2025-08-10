@@ -1,0 +1,15 @@
+<app-schedule-board
+  [tasks]="tasksSig()"
+  [members]="membersSig()"
+  (addTask)="onAddTask()"
+  (rowClick)="onRowClick($event)">
+</app-schedule-board>
+
+<app-modal [open]="showForm()" (close)="onCloseForm()">
+  <app-task-form
+    [members]="membersSig()"
+    [initial]="initialForm()"
+    (cancel)="onCloseForm()"
+    (submitForm)="onSubmitForm($event)">
+  </app-task-form>
+</app-modal>

@@ -1,0 +1,10 @@
+<!-- src/app/view/layouts/schedule-board/schedule-board.component.html -->
+<div class="header">
+  <button (click)="addTask.emit()">＋ タスク追加</button>
+</div>
+
+<app-gantt-chart
+  [tasks]="tasks"
+  [members]="members"
+  (rowClick)="rowClick.emit($event)">
+</app-gantt-chart>

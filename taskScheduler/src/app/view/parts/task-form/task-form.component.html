@@ -1,0 +1,40 @@
+<form (ngSubmit)="onSubmit()">
+  <label>分類
+    <select [(ngModel)]="val().category" name="category">
+      <option>Feature</option><option>Bug</option><option>Chore</option><option>Research</option>
+    </select>
+  </label>
+
+  <label>タスク名
+    <input [(ngModel)]="val().title" name="title" required />
+  </label>
+
+  <label>詳細
+    <textarea [(ngModel)]="val().description" name="desc"></textarea>
+  </label>
+
+  <label>担当
+    <select [(ngModel)]="val().assigneeId" name="assignee">
+      <option [ngValue]="null">未割当</option>
+      @for (m of members; track m.id) {
+        <option [ngValue]="m.id">{{ m.displayName }}</option>
+      }
+    </select>
+  </label>
+
+  <label>開始日
+    <input type="date" [(ngModel)]="val().start" name="start" required />
+  </label>
+  <label>終了日
+    <input type="date" [(ngModel)]="val().end" name="end" required />
+  </label>
+
+  <label>進捗（%）
+    <input type="number" min="0" max="100" [(ngModel)]="val().progress" name="progress" />
+  </label>
+
+  <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+    <button type="button" (click)="cancel.emit()">キャンセル</button>
+    <button type="submit">保存</button>
+  </div>
+</form>

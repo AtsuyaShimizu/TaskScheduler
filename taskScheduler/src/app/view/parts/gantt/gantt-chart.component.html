@@ -1,0 +1,36 @@
+<div class="gantt">
+  <div class="gantt-header">
+    <div class="col label">タスク / 担当</div>
+    <div class="timeline">
+      @for (d of days(); track $index) {
+        <div class="day">{{ d | date:'MM/dd' }}</div>
+      }
+    </div>
+    <div class="col progress">進捗</div>
+  </div>
+
+  <div class="gantt-rows">
+    @for (t of tasks; track t.id) {
+      <div class="row" (click)="rowClick.emit(t.id)">
+        <div class="col label">
+          <div class="title">{{ t.title }}</div>
+          <div class="assignee">{{ getAssigneeName(t.assigneeId) }}</div>
+        </div>
+
+        <div class="timeline">
+          <div class="bar"
+               [style.gridColumnStart]="dayIndex(t.start) + 1"
+               [style.gridColumnEnd]="dayIndex(t.start) + widthDays(t.start, t.end) + 1">
+            <div class="bar-progress" [style.width.%]="t.progress"></div>
+          </div>
+
+          @for (d of days(); let i = $index; track i) {
+            <div class="cell"></div>
+          }
+        </div>
+
+        <div class="col progress">{{ t.progress }}%</div>
+      </div>
+    }
+  </div>
+</div>
