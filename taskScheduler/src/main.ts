@@ -1,4 +1,5 @@
 // src/app/main.ts
+import { NgZone, ɵNoopNgZone } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { SchedulePage } from './app/page/schedule/schedule.page';
 import { routes } from './app/app.routes';
@@ -12,5 +13,6 @@ bootstrapApplication(SchedulePage, {
     provideRouter(routes),
     provideHttpClient(),
     { provide: SCHEDULE_SERVICE, useExisting: MockScheduleService },
+    { provide: NgZone, useClass: ɵNoopNgZone },
   ],
 });
