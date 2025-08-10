@@ -57,3 +57,7 @@ The frontend file structure and responsibilities are as follows:
 ### 3. Signal Declaration
 
 * globalStateやlocalStateで使用するSignalは、`computed`などによる読み取り専用のケースを除き、`WritableSignal`で宣言してください。
+
+### 4. Zone.js
+
+本アプリケーションではZone.jsを利用しません。Angularアプリケーションはゾーン非依存の構成としてください。
